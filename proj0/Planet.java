@@ -62,7 +62,7 @@ public class Planet{
 
     /**Returns true when planet p is the same with
      * Plant *this.     */
-    public boolean equals(Planet p){
+    private boolean equals(Planet p){
         if(xxPos==p.xxPos && yyPos==p.yyPos)
             return true;
         else
