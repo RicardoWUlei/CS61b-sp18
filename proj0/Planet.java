@@ -109,6 +109,6 @@ public class Planet{
 
     /**Draw a planet at its position. */
     public void draw(){
-        StdDraw.picture(xxPos, yyPos, imgFileName);
+        StdDraw.picture(xxPos, yyPos, "./images/" + imgFileName);
     }
 }
