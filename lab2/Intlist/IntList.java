@@ -81,6 +81,7 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
+        /* Test null arguments. */
         if(A==null)
             return B;
         IntList result = A;
@@ -96,6 +97,7 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
+        /* Test null arguments. */
         if(A==null)
             return B;
         if(A.rest==null){
