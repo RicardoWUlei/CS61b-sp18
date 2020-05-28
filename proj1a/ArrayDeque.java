@@ -76,9 +76,9 @@ public class ArrayDeque<T> {
             items[(nextFirst + 1) % items.length] = null;
             nextFirst = (nextFirst + 1) % items.length;
             size -= 1;
-//            if ((double) (size) / items.length < 0.25) {
-//                resize((int) (items.length * 0.25) + 1);
-//            }
+            if (size>16 & (double) (size) / items.length < 0.25) {
+                resize((int) (items.length * 0.25) + 1);
+            }
             return result;
         }
     }
@@ -93,9 +93,9 @@ public class ArrayDeque<T> {
             items[(nextLast - 1 + items.length) % items.length] = null;
             nextLast = (nextLast - 1 + items.length) % items.length;
             size -= 1;
-//            if ((double) (size) / items.length < 0.25) {
-//                resize((int) (items.length * 0.25) + 1);
-//            }
+            if (size>16 & (double) (size) / items.length < 0.25) {
+                resize((int) (items.length * 0.25) + 1);
+            }
             return result;
         }
     }
@@ -111,7 +111,7 @@ public class ArrayDeque<T> {
     }
 
 
-    public static void main(String[] args) {
+    private static void main(String[] args) {
         ArrayDeque A = new ArrayDeque<Integer>();
         A.addLast(0);
         A.addLast(1);
