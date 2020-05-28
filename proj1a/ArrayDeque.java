@@ -20,7 +20,7 @@ public class ArrayDeque<T> {
         for (int i = 1; i <= size; i++) {
             a[i] = items[(nextFirst + i) % items.length];
         }
-        nextLast = size + 1;
+        nextLast = (size + 1) % items.length;
         nextFirst = 0;
         items = a;
     }
@@ -77,7 +77,7 @@ public class ArrayDeque<T> {
             nextFirst = (nextFirst + 1) % items.length;
             size -= 1;
             if ((double) (size) / items.length < 0.25) {
-                resize((int) (items.length * 0.25)+1);
+                resize((int) (items.length * 0.25) + 1);
             }
             return result;
         }
@@ -94,7 +94,7 @@ public class ArrayDeque<T> {
             nextLast = (nextLast - 1 + items.length) % items.length;
             size -= 1;
             if ((double) (size) / items.length < 0.25) {
-                resize((int) (items.length * 0.25)+1);
+                resize((int) (items.length * 0.25) + 1);
             }
             return result;
         }
