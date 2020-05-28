@@ -20,9 +20,9 @@ public class ArrayDeque<T> {
         for (int i = 1; i <= size; i++) {
             a[i] = items[(nextFirst + i) % items.length];
         }
+        items = a;
         nextLast = (size + 1) % items.length;
         nextFirst = 0;
-        items = a;
     }
 
     /** Adds an item of type T to the front
@@ -111,16 +111,20 @@ public class ArrayDeque<T> {
     }
 
 
-    private static void main(String[] args) {
+    public static void main(String[] args) {
         ArrayDeque A = new ArrayDeque<Integer>();
         A.addLast(0);
-        A.addLast(1);;
-        System.out.println(A.removeFirst());
+        A.addLast(1);
+        A.addLast(2);
         A.addLast(3);
         A.addLast(4);
         A.addLast(5);
         A.addLast(6);
+        A.addLast(7);
+        A.addLast(8);
+//        A.addLast(9);
         System.out.println(A.removeFirst());
+        System.out.println(A.removeLast());
         A.printDeque();
     }
 }
