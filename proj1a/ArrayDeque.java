@@ -31,7 +31,7 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * 2);
         }
-        items[nextFirst] = item;
+        items[nextFirst % items.length] = item;
         nextFirst = (nextFirst - 1 + items.length) % items.length;
         size += 1;
     }
@@ -42,7 +42,7 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * 2);
         }
-        items[nextLast] = item;
+        items[nextLast % items.length] = item;
         nextLast = (nextLast + 1) % items.length;
         size += 1;
     }
@@ -76,9 +76,9 @@ public class ArrayDeque<T> {
             items[(nextFirst + 1) % items.length] = null;
             nextFirst = (nextFirst + 1) % items.length;
             size -= 1;
-            if ((double) (size) / items.length < 0.25) {
-                resize((int) (items.length * 0.25) + 1);
-            }
+//            if ((double) (size) / items.length < 0.25) {
+//                resize((int) (items.length * 0.25) + 1);
+//            }
             return result;
         }
     }
@@ -93,9 +93,9 @@ public class ArrayDeque<T> {
             items[(nextLast - 1 + items.length) % items.length] = null;
             nextLast = (nextLast - 1 + items.length) % items.length;
             size -= 1;
-            if ((double) (size) / items.length < 0.25) {
-                resize((int) (items.length * 0.25) + 1);
-            }
+//            if ((double) (size) / items.length < 0.25) {
+//                resize((int) (items.length * 0.25) + 1);
+//            }
             return result;
         }
     }
@@ -113,13 +113,14 @@ public class ArrayDeque<T> {
 
     private static void main(String[] args) {
         ArrayDeque A = new ArrayDeque<Integer>();
-        A.addFirst(0);
-        for (int k = 0; k < 8; k++) {
-            A.addLast(k);
-        }
-        for (int k = 0; k < 7; k++) {
-            A.removeFirst();
-        }
+        A.addLast(0);
+        A.addLast(1);;
+        System.out.println(A.removeFirst());
+        A.addLast(3);
+        A.addLast(4);
+        A.addLast(5);
+        A.addLast(6);
+        System.out.println(A.removeFirst());
         A.printDeque();
     }
 }
