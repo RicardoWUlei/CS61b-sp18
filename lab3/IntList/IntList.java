@@ -123,6 +123,14 @@ public class IntList {
             B = new IntList(pointA.first, B);
             pointA = pointA.rest;
         }
+        // Copy the items from B to A
+        pointA = A;
+        IntList pointB = B;
+        while (pointB != null) {
+            pointA.first = pointB.first;
+            pointA = pointA.rest;
+            pointB = pointB.rest;
+        }
         return B;
     }
 

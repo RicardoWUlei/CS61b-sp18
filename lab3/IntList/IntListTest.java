@@ -68,10 +68,12 @@ public class IntListTest {
 
     @Test
     public void testReverse() {
-        IntList A = IntList.of(1, 2, 3, 5);
-        IntList exp = IntList.of(5, 3, 2, 1);
-        assertEquals(exp, IntList.reverse(A));
-        assertNotEquals(A, IntList.reverse(A));
+        IntList A = IntList.of(4, 3, 2, 1);
+        IntList B = IntList.of(4, 3, 2, 1);
+        IntList exp = IntList.of(1, 2, 3, 4);
+        IntList.reverse(A);
+        assertEquals(exp, A);
+        assertNotEquals(A, B);
         assertEquals(null, IntList.reverse(null));
     }
 
