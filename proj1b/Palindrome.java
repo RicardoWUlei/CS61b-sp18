@@ -2,7 +2,7 @@ public class Palindrome {
     /** Returns a deque where the characters appear in the same order as in the word. */
     public Deque<Character> wordToDeque(String word) {
         LinkedListDeque result = new LinkedListDeque<Character>();
-        for (int i = 0; i < word.length(); i ++ ){
+        for (int i = 0; i < word.length(); i++) {
             result.addLast(word.charAt(i));
         }
         return result;
