@@ -12,9 +12,8 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /** Array for storing the buffer data. */
     private T[] rb;
 
-    /**
-     * Create a new ArrayRingBuffer with the given capacity.
-     */
+    /** Create a new ArrayRingBuffer with the given capacity.
+     * @param capacity */
     public ArrayRingBuffer(int capacity) {
         this.capacity = capacity;
         rb = (T[]) new Object[capacity];
@@ -27,7 +26,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      * Adds x to the end of the ring buffer. If there is no room, then
      * throw new RuntimeException("Ring buffer overflow"). Exceptions
      * covered Monday.
-     */
+     * @param x */
     public void enqueue(T x) {
         if (!isFull()) {
             rb[last] = x;
@@ -70,7 +69,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
         return new BufferIterator();
     }
 
-    public class BufferIterator implements Iterator<T> {
+    private class BufferIterator implements Iterator<T> {
         private int ptr;
         public BufferIterator() {
             ptr = 0;
@@ -83,19 +82,10 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
 
         @Override
         public T next() {
-            T re = rb[ptr+first];
+            T re = rb[ptr + first];
             ptr += 1;
             return re;
         }
     }
 
-    public static void main(String[] args) {
-        ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<Integer>(10);
-        for (int i = 0; i < 10; i++) {
-            arb.enqueue(i);
-        }
-        for (Integer i : arb) {
-            System.out.println(i);
-        }
-    }
 }
