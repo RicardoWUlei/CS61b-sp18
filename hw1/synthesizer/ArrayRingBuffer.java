@@ -64,4 +64,38 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
             throw new RuntimeException("Ring buffer underflow");
         }
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new BufferIterator();
+    }
+
+    public class BufferIterator implements Iterator<T> {
+        private int ptr;
+        public BufferIterator() {
+            ptr = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return (ptr != capacity);
+        }
+
+        @Override
+        public T next() {
+            T re = rb[ptr+first];
+            ptr += 1;
+            return re;
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayRingBuffer<Integer> arb = new ArrayRingBuffer<Integer>(10);
+        for (int i = 0; i < 10; i++) {
+            arb.enqueue(i);
+        }
+        for (Integer i : arb) {
+            System.out.println(i);
+        }
+    }
 }
